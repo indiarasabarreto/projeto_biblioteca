@@ -15,6 +15,9 @@ def register_book(title_to_add: str) -> None:
     print(f"Livro '{title_to_add}' adicionado à biblioteca.")
 
 
+def search_book_title(title_to_search: str) -> bool:
+    pass 
+
 def main():
     while (True):
         print(f'Livros disponíveis: {books}')
