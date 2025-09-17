@@ -16,21 +16,23 @@ def register_book(title_to_add: str) -> None:
 
 
 def search_book_title(title_to_search: str) -> bool:
-    pass 
+        for book in books:
+            if book == title_to_search:
+                print("Livro encontrado!")
+                return True
+        print("Livro não encontrado!")
+        return False
+            
 
 def main():
     while (True):
         print(f'Livros disponíveis: {books}')
         book_title = input("Digite o título do livro: ")
-        for book in books:
-            if book == book_title:
-                print("Livro encontrado!")
-        else:
-            print("Livro não encontrado!")
-            register_book(book_title)
-        
-   
+        is_book_found = search_book_title(book_title)
 
+        if not is_book_found:
+            register_book(book_title)       
+   
 
 if __name__ == "__main__":
     print("Iniciando programa...")
