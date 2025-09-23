@@ -13,7 +13,8 @@ def search_genre(genre_to_search: str) -> str | None:
     return
 
 def show_sorted_genre() -> list[str]:
-    pass
+    music_genres.sort()
+    return music_genres
 
 
 def main ():
@@ -22,6 +23,7 @@ def main ():
         
         print('Digite 1 para buscar gênero')
         print('Digite 2 para registrar gênero')
+        print('Digite 3 para ver todos os gêneros cadastrados em ordem alfabética')
         print('Digite X para sair do menu')
 
         selected_option = input('Digite a opção desejada: ')
@@ -38,6 +40,9 @@ def main ():
             genre_to_register = input('Digite o gênero que deseja registrar: ')
             register_new_genre(genre_to_register)
             print(f'Novo gênero registrado: {genre_to_register}')
+        elif selected_option == '3':
+           sorted_genre = show_sorted_genre()
+           print(f'Gêneros em ordem alfabética: {sorted_genre}')
         elif selected_option.lower() == 'x':
             print('Saindo do menu...')
             break
