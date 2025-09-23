@@ -1,4 +1,4 @@
-people_names = ['Hermes Trismegisto', 'Platão', 'Carl Jung', 'Albert Einstein'] 
+people_names = ['Hermes Trismegisto', 'Platão', 'Carl Jung', 'Albert Einstein']
 
 
 # Função para adicionar os nomes não existentes na lista
