@@ -1,4 +1,4 @@
-music_genres = ['Rock', 'Jazz', 'Blues', 'Soul', 'Metal', 'Hip-hop', 'RnB']
+music_genres = [{'Rock', 'Jazz', 'Blues', 'Soul', 'Metal', 'Hip-hop', 'RnB'}]
 
 
 def register_new_genre(add_new_genre: str) -> None:
@@ -13,18 +13,28 @@ def search_genre(genre_to_search: str) -> str | None:
     return
 
 def show_sorted_genre() -> list[str]:
-    music_genres.sort()
-    return music_genres
+    return sorted(music_genres)
+    
+def show_reversed_sorted_genre() -> list[str]:
+    return sorted(music_genres, reverse=True)
+
+def invalid_option_selected() -> None:
+    print('Opção Inválida. Não entendi...')
 
 
 def main ():
     print('Bem vindo!')
+    print(f'Gêneros musicais cadastrados {music_genres}')
+
     while(True):
         
+        print('*' * 50)
         print('Digite 1 para buscar gênero')
         print('Digite 2 para registrar gênero')
         print('Digite 3 para ver todos os gêneros cadastrados em ordem alfabética')
+        print('Digite 4 para ver gêneros cadastrados em ordem contrária')
         print('Digite X para sair do menu')
+        print('*' * 50)
 
         selected_option = input('Digite a opção desejada: ')
 
@@ -43,9 +53,14 @@ def main ():
         elif selected_option == '3':
            sorted_genre = show_sorted_genre()
            print(f'Gêneros em ordem alfabética: {sorted_genre}')
+        elif selected_option == '4':
+            reversed_genre = show_reversed_sorted_genre()
+            print(f'Gêneros em ordem contrária: {reversed_genre}')
         elif selected_option.lower() == 'x':
             print('Saindo do menu...')
             break
+        else:
+            invalid_option_selected()
         
 
 
