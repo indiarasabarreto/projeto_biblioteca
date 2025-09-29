@@ -4,15 +4,31 @@ artists_by_genre = {
     'metal': []
 }
 
+#utils
+def lower_genre(genre: str) -> str:
+    return genre.lower()
+
+def get_by_genre(genre: str) -> list[str]:
+    return artists_by_genre.get(lower_genre(), [])
+
+def set_by_genre(artist_name: str, genre: str) -> None:
+    lowered_genre = lower_genre()
+
+    if lowered_genre in artists_by_genre:
+        artists_by_genre[lowered_genre].append(artist_name)
+    else:
+        artists_by_genre[lowered_genre] = [artist_name] 
+
+# services
 def register_artist_by_genre(artist_name: str, genre: str) -> None:
-    artists_by_genre[genre.lower()].append(artist_name)
+    set_by_genre(artist_name, genre)
     return
 
 def get_artists_by_genre(genre: str) -> list[str]:
-    return artists_by_genre[genre.lower()]
+    return get_by_genre(genre)
     
 def search_artist_by_genre(artist_name: str, genre: str) -> str | None:
-    artists = artists_by_genre[genre.lower()]
+    artists = get_by_genre(genre)
 
     for artist in artists:
         if artist == artist_name:
