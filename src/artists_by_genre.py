@@ -1,10 +1,10 @@
-artists_by_genre = {
+artists_by_genre: dict[str, list[str]] = {
     'rock': [],
     'mpb': [],
     'metal': []
 }
 
-#utils
+#utils - utilidades
 def lower_genre(genre: str) -> str:
     return genre.lower()
 
@@ -19,7 +19,10 @@ def set_by_genre(artist_name: str, genre: str) -> None:
     else:
         artists_by_genre[lowered_genre] = [artist_name] 
 
-# services
+
+# services - uma service não pode chamar a outra
+# mas uma service pode chamar uma util
+
 def register_artist_by_genre(artist_name: str, genre: str) -> None:
     set_by_genre(artist_name, genre)
     return
@@ -38,6 +41,9 @@ def search_artist_by_genre(artist_name: str, genre: str) -> str | None:
 def invalid_option_selected() -> None:
     print('Opção Inválida. Não entendi...')
 
+
+# a main é como se fosse a interface do usuário
+# uma service ela é a interação do usuário do com o sistema
 
 def main ():
     print('Bem vindo!')
@@ -85,3 +91,5 @@ if __name__ == "__main__":
     print("Iniciando programa...")
     main()
     print("Programa finalizado.")
+
+
